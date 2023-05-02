@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Conversor de Vídeos do YouTube para MP3</title>
+</head>
+<body>
+    <h1>Conversor de Vídeos do YouTube para MP3</h1>
+    {% if success %}
+        <p>Conversão concluída com sucesso! <a href="{{ url_for('index') }}">Converter outro vídeo</a></p>
+    {% elif error %}
+        <p>Ocorreu um erro ao converter o vídeo. Por favor, verifique a URL e tente novamente. <a href="{{ url_for('index') }}">Voltar</a></p>
+    {% else %}
+        <form method="post" action="{{ url_for('converter') }}">
+            <label for="url">URL do vídeo do YouTube:</label>
+            <input type="text" name="url" required>
+            <br>
+            <button type="submit">Converter para MP3</button>
+        </form>
+    {% endif %}
+</body>
+</html>
